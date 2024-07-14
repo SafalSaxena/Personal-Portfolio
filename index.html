@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+    <style>
+        input {
+          text-align: center;
+        }
+        ::-webkit-input-placeholder {
+          text-align: center;
+        }
+        :-moz-placeholder {
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+
+
+
+    <!-- header -->
+    <header class="header">
+        <img src="./assets/logo/logo.png" alt="" class="logo">
+         <ul class="main-nav-list">
+            <li><a href="#" class="main-nav-link">Home</a></li>
+            <li><a href="#project" class="main-nav-link">Work</a></li>
+            <li><a href="#form-box" class="main-nav-link">Contact</a></li>
+         </ul>
+    </header>
+  
+    <section class="hero">
+        <img class="hero-img" src="./assets/hero/webdev.png" alt="">
+        <img class="bg" src="./assets/hero/bg.jpg" alt="">
+        <div class="hero-description">
+            <h1 class="hero-title">
+                Hi,<br> I'm <span class="ayush">Safal Saxena</span>!
+            </h1>
+            <p class="hero-subheading">Frontend Developer !</p>
+        </div>
+        <div class="hero-model">
+            <model-viewer 
+                src="./models/desk.glb"
+                camera-controls
+                disable-pan
+                disable-zoom
+                interaction-prompt="none"
+                min-camera-orbit="auto 55deg auto"
+                max-camera-orbit="auto 92deg auto"
+                field-of-view="35.3deg"
+            ></model-viewer>
+        </div>
+    </section>
+
+    <section class="about-me">
+        <div class="about-me-description">
+            <p class="introduction">INTRODUCTION !</p>
+            <h1 class="about-me-title">Hello World</h1>
+            <p class="about-me-subheading">
+                Hello, everyone! I am a frontend developer. 
+                My name is Safal Saxena, and I am passionate about crafting immersive digital experiences that delight and engage users.
+                I have honed my skills in responsive design, ensuring that every creation adapts gracefully to various devices and screen sizes. 
+                I understand the importance of delivering a consistent and delightful experience to users, whether they are browsing on a desktop, tablet, or smartphone.
+                As a continuous learner, I am always excited to stay up-to-date with the latest technologies and trends in the frontend realm. 
+                Whether it's exploring new JavaScript frameworks, mastering CSS animations, or understanding the principles of accessibility, 
+                I am committed to expanding my expertise to deliver cutting-edge solutions.
+            </p>
+        </div>
+        <div class="cards">
+            <div class="card animation">
+                <img class="reactImg" src="./assets/skills/react.png" alt="">
+                <p class="title">React Js</p>
+            </div>
+            <div class="card animation">
+                <img class="javascript" src="./assets/skills/js.png" alt="">
+                <p class="title">JavaScript</p>
+            </div>
+
+
+
+
+
+            <!-- <div class="card animation">
+                <img class="tailwind" src="./assets/skills/Tailwind.png" alt="">
+                <p class="title">Tailwind CSS</p>
+            </div> -->
+            <div class="card animation">
+                <img class="CSS" src="./assets/skills/css.png" alt="">
+                <p class="title">CSS</p>
+            </div>
+            <div class="card animation">
+                <img class="html" src="./assets/skills/html.png" alt="">
+                <p class="title">HTML</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="time-line-section">
+        <div class="time-line-content">
+            <div class="heading-description">
+                <p class="time-line-title">Technologies learned by me</p>
+                <h1 class="time-line-subheading">Technologies Known</h1>
+            </div>
+            <div class="timeline">
+                 <div class="line"></div>
+                 <div class="time-line-description">
+                    <div class="mini-circle"></div>
+                    <div class="content">
+                        <h2 class="content-timeline-title">React Js</h2>
+                        <p class="content-timeline-description">
+                            React. js is an open-source JavaScript library, crafted with precision by Facebook, that aims to simplify the intricate process of building interactive user interfaces. 
+                            Imagine a user interface built with React as a collection of components, each responsible for outputting a small, reusable piece of HTML code.
+                        </p>
+                    </div>
+                 </div>
+                 <div class="time-line-description">
+                    <div class="mini-circle"></div>
+                    <div class="content">
+                        <h2 class="content-timeline-title">JavaScript</h2>
+                        <p class="content-timeline-description">
+                            JavaScript is a scripting language used to develop web pages. Developed in Netscape, JS allows developers to create a dynamic and interactive web page to interact
+                            with visitors and execute complex actions. It also enables users to load content into a document without reloading the entire page.
+                        </p>
+                    </div>
+                 </div>
+                 <!-- <div class="time-line-description">
+                    <div class="mini-circle"></div>
+                    <div class="content">
+                        <h2 class="content-timeline-title">Tailwind CSS</h2>
+                        <p class="content-timeline-description">
+                           Tailwind CSS is a design system implementation in pure CSS. It is also configurable. 
+                            It gives developers super powers. It allows them to build websites with a clean consistent UI out of the box.
+                        </p>
+                    </div>
+                 </div> -->
+                
+                
+                
+                
+                
+                 <div class="time-line-description">
+                    <div class="mini-circle"></div>
+                    <div class="content">
+                        <h2 class="content-timeline-title">CSS</h2>
+                        <p class="content-timeline-description">
+                            CSS (Cascading Style Sheets) is used to style and layout web pages — for example, to alter the font, color, 
+                            size, and spacing of your content, split it into multiple columns, or add animations and other decorative features.
+                        </p>
+                    </div>
+                 </div>
+                 <div class="time-line-description">
+                    <div class="mini-circle"></div>
+                    <div class="content">
+                        <h2 class="content-timeline-title">HTML</h2>
+                        <p class="content-timeline-description">
+                            HTML (HyperText Markup Language) is the code that is used to structure a web page and its content. For example, content could be structured within a set of paragraphs, a list of bulleted points, or using images and data tables.
+                        </p>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project" id="project">
+        <h1 class="project-title">Projects</h1>
+        <p class="youtube-description">
+            Take a look on my Projects 
+            <br> Tap on the images to see them
+        </p>
+        <div class="videos">
+            <div class="project-file">
+                <a href="https://dinenyplus.web.app" 
+                target="_blank"
+                ><img class="images" src="./assets/links/disney.png" alt=""></a> -->
+                
+                <h2 class="main-project-title">DISNEY+ HOTSTAR</h2>
+                <p class="project-description">
+                    Using React Js , MongoDb and Firebase,
+                    Used Redux creating Store and Slices,
+                    Also Used styled Components For Styling and animation and 
+                    used DataBase to fetch Data.
+                </p>
+            </div>
+
+            <div class="project-file">
+                <a href="https://foodginie.netlify.app" 
+                target="_blank"
+                ><img class="images" src="./assets/links/foodginie.png" alt="">
+                  </a>
+                 <h2 class="main-project-title">Food Ginie</h2>
+                <p class="project-description">
+                    The food delivery website made using HTML, CSS and JavaScript. 
+                    Which includes the menu of different restaurants. 
+                    You can give feed back of services, 
+                    you can know about us and the website.
+                </p>
+               
+            </div>
+
+            <div class="project-file">
+                <a href="https://razorpay019.netlify.app/" 
+                target="_blank"
+               ><img class="images" src="./assets/links/razorpay.png" alt=""></a>
+                 <h2 class="main-project-title">RAZOR PAY CLONE</h2>
+                <p class="project-description">
+                    The clone of the Official Razor Pay site,
+                    the frontend is created using Tailwind CSS, CSS, HTML.
+                    Fully Responsive, Combines of necessary animations,
+                    and with a footer which contains contact details.
+                </p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="final">
+        <div class="form-box" id="form-box">
+            <h1 class="form-title">Contact</h1>
+            <div class="form-bg">
+                <form id="form">
+                    <div class="form-content">
+                        <div class="email-box">
+                            <lable class="email-title" for="email">
+                                E-mail:
+                            </lable>
+                            <input type="email" id="email" name="email" 
+                            placeholder="E-mail destination, ex:wd.https@gmail.com" class="email-input">
+                        </div>
+                        <div class="subject-box">
+                            <label for="subject" class="subject-title">Subject:</label>
+                            <input type="text" id="subject" name="subject"
+                            placeholder="Subject E-mail" class="subject-input">
+                        </div>
+                        <div class="message-box">
+                            <label for="message" class="message-title">Message:</label>
+                            <textarea type="text" id="message" name="message"
+                            placeholder="E-mail message" class="message-input"></textarea>
+                        </div>
+                        <div id="buttons">
+                            <button class="button-send" type="submit" role="button">
+                                <span class="text">Send</span>
+                              </button>
+                            <button class="button-reset" type="Reset" role="button">
+                                <span class="text">Reset</span>
+                              </button>
+                        </div>
+                    </div>
+                </form>
+                <div id="spinner" class="hideSpinner messageSent">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                </div>
+                <div id="spinner" class="hideSpinner messageSent">
+                    <div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <model-viewer
+        class="robo"
+        src="./models/robot_playground/scene.gltf"
+        camera-controls
+        disable-pan
+        disable-zoom
+        interaction-prompt="none"
+        field-of-view="10deg"
+        autoplay="experiment_Object_159"
+        ></model-viewer>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
