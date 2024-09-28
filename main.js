@@ -1,22 +1,22 @@
 // Animation cards
 let animation = document.querySelectorAll(".animation");
 
-function showScroll(){
-    let scrollTop = document.documentElement.scrollTop;
-    for(let i=0 ; i<animation.length;i++){
-        let heigthAnimation = animation[i].offsetHeight;
-        if(heigthAnimation - -450 < scrollTop){
-            animation[i].style.opacity = 1;
-            animation[i].classList.add("showUp");
-        }
+function showScroll() {
+  let scrollTop = document.documentElement.scrollTop;
+  for (let i = 0; i < animation.length; i++) {
+    let heigthAnimation = animation[i].offsetHeight;
+    if (heigthAnimation - -450 < scrollTop) {
+      animation[i].style.opacity = 1;
+      animation[i].classList.add("showUp");
     }
-} 
+  }
+}
 
-window.addEventListener("scroll", showScroll)
+window.addEventListener("scroll", showScroll);
 
 // animation timeline
-function qs(selector, all = false){
-    return all
+function qs(selector, all = false) {
+  return all
     ? document.querySelectorAll(selector)
     : document.querySelector(selector);
 }
@@ -24,143 +24,141 @@ function qs(selector, all = false){
 const sections = qs(".time-line-description", true);
 const timeline = qs(".timeline");
 const line = qs(".line");
-line.style.bottom = 'calc(100% - 20px)';
+line.style.bottom = "calc(100% - 20px)";
 let prevScrollY = window.scrollY;
 let up, down;
 let full = false;
 let set = 0;
-const targetY = window.innerHeight *0.8;
+const targetY = window.innerHeight * 0.8;
 
-function scrollHandler(e){
-    const {scrollY} = window;
-    up = scrollY < prevScrollY;
-    down = !up;
-    const timeLineRect = timeline.getBoundingClientRect();
-    const lineRect = line.getBoundingClientRect();
+function scrollHandler(e) {
+  const { scrollY } = window;
+  up = scrollY < prevScrollY;
+  down = !up;
+  const timeLineRect = timeline.getBoundingClientRect();
+  const lineRect = line.getBoundingClientRect();
 
-    const dist = targetY - timeLineRect.top ;
+  const dist = targetY - timeLineRect.top;
 
-    if(down && !full){
-        set = Math.max(set,dist);
-        line.style.bottom = 'calc(100% - ${set}px)';
+  if (down && !full) {
+    set = Math.max(set, dist);
+    line.style.bottom = "calc(100% - ${set}px)";
+  }
+  if (dist > timeline.offsetHeight + 50 && !full) {
+    full = true;
+    line.style.bottom = "-50px";
+  }
+  sections.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top + item.offsetHeight / 5 < targetY) {
+      item.classList.add("show-me");
     }
-    if(dist > timeline.offsetHeight + 50 && !full){
-        full = true;
-        line.style.bottom = '-50px';
-    }
-    sections.forEach((item)=>{
-        const rect = item.getBoundingClientRect();
-        if(rect.top + item.offsetHeight/ 5 <targetY){
-            item.classList.add("show-me");
-        }
-    });
-    prevScrollY = window.scrollY;
+  });
+  prevScrollY = window.scrollY;
 }
 scrollHandler();
 line.style.diplay = "block";
 window.addEventListener("scroll", scrollHandler);
 
-//form 
+//form
 
-document.addEventListener("DOMContentLoaded",function() {
-    const email= {
-        email:"",
-        subject:"",
-        message:"",
-    };
+document.addEventListener("DOMContentLoaded", function () {
+  const email = {
+    email: "",
+    subject: "",
+    message: "",
+  };
 
-    const inputEmail = document.querySelector("#email");
-    const inputSubject = document.querySelector("#subject");
-    const inputMessage = document.querySelector("#message");
-    const form = document.querySelector("#form");
-    const btnSubmit = document.querySelector('#form button [type="submit"] ');
-    const btnReset = document.querySelector('#form button [type="reset"] ');
-    const spinner = document.querySelector("#spinner");
+  const inputEmail = document.querySelector("#email");
+  const inputSubject = document.querySelector("#subject");
+  const inputMessage = document.querySelector("#message");
+  const form = document.querySelector("#form");
+  const btnSubmit = document.querySelector('#form button [type="submit"] ');
+  const btnReset = document.querySelector('#form button [type="reset"] ');
+  const spinner = document.querySelector("#spinner");
 
-    inputEmail.addEventListener("input",validate)
-    inputSubject.addEventListener("input",validate)
-    inputMessage.addEventListener("input",validate)
+  inputEmail.addEventListener("input", validate);
+  inputSubject.addEventListener("input", validate);
+  inputMessage.addEventListener("input", validate);
 
-    form.addEventListener("submit",sendEmail);
+  form.addEventListener("submit", sendEmail);
 
-    btnReset.addEventListener("click",function(e){
-        e.preventDefault();
-        resetForm();
-    } )
+  btnReset.addEventListener("click", function (e) {
+    e.preventDefault();
+    resetForm();
+  });
 
-    function sendEmail(e){
-        e.preventDefault()
-        spinner.classList.remove("hideSpinner");
+  function sendEmail(e) {
+    e.preventDefault();
+    spinner.classList.remove("hideSpinner");
 
-        setTimeout(()=>{
-            spinner.classList.add("hideSpinner");
-            resetForm();
-            const alertSucces = document.createElement("P");
-            alertSucces.textContent= "Message Sent!"
-            alertSucces.classList.add("messageSent");
+    setTimeout(() => {
+      spinner.classList.add("hideSpinner");
+      resetForm();
+      const alertSucces = document.createElement("P");
+      alertSucces.textContent = "Message Sent!";
+      alertSucces.classList.add("messageSent");
 
-            form.appendChild(alertSucces);
-            setTimeout(()=> {
-                alertSucces.remove()
-            },3000)
-        },3000)
+      form.appendChild(alertSucces);
+      setTimeout(() => {
+        alertSucces.remove();
+      }, 3000);
+    }, 3000);
+  }
+  function validate(e) {
+    if (e.target.value.trim() === "") {
+      showAlert(
+        "⚠ This field ${e.target.id} is required",
+        e.target.parentElement
+      );
+      email[e.target.name] = "";
+      checkEmail();
+      return;
     }
-    function validate(e){
-        if(e.target.value.trim()===""){
-            showAlert(
-                '⚠ This field ${e.target.id} is required',
-                e.target.parentElement
-            );
-            email[e.target.name]="";
-            checkEmail();
-            return;
-        }
-        if(e.target.id === "email" && ! validateEmail(e.target.value)){
-            showAlert("⚠ The mail is not valid", e.target.parentElement);
-            email[e.target.name]="";
-            checkEmail()
-            return;
-        }
-        cleanAlert(e.target.parentElement);
-        email[e.target.name] = e.target.value.trim().toLowerCase();
-        checkEmail();
+    if (e.target.id === "email" && !validateEmail(e.target.value)) {
+      showAlert("⚠ The mail is not valid", e.target.parentElement);
+      email[e.target.name] = "";
+      checkEmail();
+      return;
     }
-    function showAlert(message, reference){
-        cleanAlert(reference);
+    cleanAlert(e.target.parentElement);
+    email[e.target.name] = e.target.value.trim().toLowerCase();
+    checkEmail();
+  }
+  function showAlert(message, reference) {
+    cleanAlert(reference);
 
-        const error = document.createElement("P");
-        error.textContent= message;
-        error.classList.add("error-form");
+    const error = document.createElement("P");
+    error.textContent = message;
+    error.classList.add("error-form");
 
-        reference.appendChild(error)
+    reference.appendChild(error);
+  }
+  function cleanAlert(reference) {
+    const alert = reference.querySelector(".error-form");
+    if (alert) {
+      alert.remove();
     }
-    function cleanAlert(reference){
-        const alert = reference.querySelector(".error-form");
-        if(alert){
-            alert.remove()
-        }
-    }
-    function validateEmail(email){
-        const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-        const result = regex.test(email);
-        return result;
-    }
+  }
+  function validateEmail(email) {
+    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const result = regex.test(email);
+    return result;
+  }
 
-    function checkEmail(){
-        if(Object.values(email).includes("")){
-            btnSubmit.diabled= true;
-            return; 
-        }
-        btnSubmit.disabled=false;
+  function checkEmail() {
+    if (Object.values(email).includes("")) {
+      btnSubmit.diabled = true;
+      return;
     }
-    function resetForm(){
-        email.email="";
-        email.subject="";
-        email.message="";
-        
-        form.reset();
-        checkEmail();
-    }
-}
+    btnSubmit.disabled = false;
+  }
+  function resetForm() {
+    email.email = "";
+    email.subject = "";
+    email.message = "";
 
-);
+    form.reset();
+    checkEmail();
+  }
+});
